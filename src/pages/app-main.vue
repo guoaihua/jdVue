@@ -2,14 +2,79 @@
   <div id="appMain">
     <el-container>
       <el-main>
+         <!--搜索框-->
         <search></search>
+        <!--卡片轮播-->
         <template>
-          <el-carousel indicator-position="outside">
-            <el-carousel-item v-for="img in imgs" :key="img.id">
-              <h3><img  :src="img" ></h3>
+          <el-carousel indicator-position="inside" height="190px">
+            <el-carousel-item v-for="item in imgs" :key="item.id">
+              <h3><img  :src="item.src" ></h3>
             </el-carousel-item>
           </el-carousel>
         </template>
+        <!--图标导航-->
+        <div class="icons">
+          <el-row type="flex" justify="center" >
+            <el-col :span="4" v-for="item in icons1" :key="item.id"><div class="grid-content" ><img :src="item.imgSrc" alt=""> <div>{{item.title}}</div></div></el-col>
+          </el-row>
+          <el-row type="flex" justify="center">
+            <el-col :span="4"  v-for="item in icons2" :key="item.id"><div class="grid-content" ><img :src="item.imgSrc" alt=""> <div>{{item.title}}</div></div></el-col>
+          </el-row>
+        </div>
+        <!--爱生活-->
+        <div class="pics">
+          <el-row type="flex">
+            <el-col :span="24" ><img :src="banners.imgSrc" alt=""></el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12" >
+              <div class="pic-content">
+                <div >推荐手机dadad</div>
+                <img :src="banners.imgs[0].imgSrc" alt="">
+                <img :src="banners.imgs[0].imgSrc" alt="">
+              </div>
+            </el-col>
+            <el-col :span="12" >
+              <div class="pic-content">
+                <div>推荐手机adadad</div>
+                <img :src="banners.imgs[0].imgSrc" alt="">
+                <img :src="banners.imgs[0].imgSrc" alt="">
+              </div>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12" >
+              <div class="pic-content">
+                <div>推荐手机dadad</div>
+                <img :src="banners.imgs[0].imgSrc" alt="">
+                <img :src="banners.imgs[0].imgSrc" alt="">
+              </div>
+            </el-col>
+            <el-col :span="12" >
+              <div class="pic-content">
+                <div>推荐手机dadada</div>
+                <img :src="banners.imgs[0].imgSrc" alt="">
+                <img :src="banners.imgs[0].imgSrc" alt="">
+              </div>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12" >
+              <div class="pic-content">
+                <div>推荐手机dadsad</div>
+                <img :src="banners.imgs[0].imgSrc" alt="">
+                <img :src="banners.imgs[0].imgSrc" alt="">
+              </div>
+            </el-col>
+            <el-col :span="12" >
+              <div class="pic-content">
+                <div>推荐手机adsadsad</div>
+                <img :src="banners.imgs[0].imgSrc" alt="">
+                <img :src="banners.imgs[0].imgSrc" alt="">
+              </div>
+            </el-col>
+          </el-row>
+        </div>
       </el-main>
       <el-footer>
         <my-footer></my-footer>
@@ -21,18 +86,41 @@
 <script>
 import myFooter from '../components/myFooter'
 import search from '../components/search'
-import img1 from '../assets/imgs/bg1.jpg'
 export default {
   name: 'appMain',
   data () {
     return {
-      imgs: [{
-        img1,
-        id: 0
-      }, {
-        img1,
-        id: 1
-      }]
+      imgs: [
+        {src: '/static/imgs/bg1.jpg'},
+        {src: '/static/imgs/bg1.jpg'}
+      ],
+      icons1: [
+        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
+        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
+        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
+        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
+        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'}
+      ],
+      icons2: [
+        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
+        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
+        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
+        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
+        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'}
+      ],
+      banners: {
+        imgSrc: '/static/imgs/pics.jpg',
+        imgs: [
+          {imgSrc: '/static/imgs/imgs.jpg'},
+          {imgSrc: '/static/imgs/imgs.jpg'},
+          {imgSrc: '/static/imgs/imgs.jpg'},
+          {imgSrc: '/static/imgs/imgs.jpg'},
+          {imgSrc: '/static/imgs/imgs.jpg'},
+          {imgSrc: '/static/imgs/imgs.jpg'},
+          {imgSrc: '/static/imgs/imgs.jpg'},
+          {imgSrc: '/static/imgs/imgs.jpg'}
+        ]
+      }
     }
   },
   components: {
@@ -51,7 +139,6 @@ export default {
       height: 100%;
       .el-main {
         padding: 0;
-        background-color: gold;
         #search {
           position: fixed;
           top: 0;
@@ -65,10 +152,49 @@ export default {
           line-height: 183px;
           margin: 0;
         }
+        .icons {
+          width: 100%;
+          height: 200px;
+          background-color: white;
+          border-top-left-radius: 30px;
+          border-top-right-radius: 30px;
+         .el-row {
+           height: 50%;
+           .grid-content {
+             width: 100%;
+             height: 100%;
+             padding-top: 13px;
+             img {
+               width: 45px;
+               height: 45px;
+             }
+             div {
+               font-family: "宋体";
+               font-size: 14px;
+             }
+           }
+         }
+        }
+        .pics img{
+          width: 100%;
+          height: 40px;
+          background-color: #f6f6f6;
+        }
+        .pic-content {
+          div {
+            font-size: 14px;
+            font-family: 宋体;
+            margin-left: -42px;
+          }
+          img {
+            width: 72px;
+            height: 72px;
+          }
+        }
       }
       .el-footer {
         padding: 0;
-        background-color: greenyellow;
+        border-top: #6704041c solid 2px;
       }
     }
   }

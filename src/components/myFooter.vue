@@ -10,7 +10,7 @@
             <li>
               <p><icon class="bill-icon" name="bill"></icon></p>
               <p>
-                <router-link :to="{name:'calssify'}">分类</router-link>
+                <router-link :to="{name:'classifyDetail'}">分类</router-link>
               </p>
             </li>
             <li>

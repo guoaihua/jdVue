@@ -4,6 +4,7 @@ import appMain from '../pages/app-main'
 import appShopping from '../pages/app-shopping'
 import appFind from '../pages/app-find'
 import appClassify from '../pages/app-classify'
+import classifyDeatail from '../pages/classifyDetail'
 import appMy from '../pages/app-my'
 
 Vue.use(Router)
@@ -18,7 +19,14 @@ export default new Router({
     {
       path: '/classify',
       name: 'calssify',
-      component: appClassify
+      component: appClassify,
+      children: [
+        {
+          path: 'classifyDetail',
+          name: 'classifyDetail',
+          component: classifyDeatail
+        }
+      ]
     },
     {
       path: '/shopping',
