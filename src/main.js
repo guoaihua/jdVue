@@ -6,7 +6,9 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Icon from 'vue-svg-icon/Icon'
+import axios from 'axios'
 
+Vue.prototype.$axios = axios
 Vue.component('icon', Icon)
 Vue.use(ElementUI)
 Vue.config.productionTip = false

@@ -2,31 +2,31 @@
     <div id="myFooter">
           <ul>
             <li>
-              <p><icon class="bill-icon" name="bill"></icon></p>
+              <p><icon class="home-icon icon" name="home"></icon></p>
               <p>
                 <router-link :to="{name:'appMain'}">首页</router-link>
               </p>
             </li>
             <li>
-              <p><icon class="bill-icon" name="bill"></icon></p>
+              <p><icon class="sort-icon icon" name="sort"></icon></p>
               <p>
                 <router-link :to="{name:'classifyDetail'}">分类</router-link>
               </p>
             </li>
             <li>
-              <p><icon class="bill-icon" name="bill"></icon></p>
+              <p><icon class="cart-icon icon" name="cart"></icon></p>
               <p>
                 <router-link :to="{name:'shopping'}">购物车</router-link>
               </p>
             </li>
             <li>
-              <p><icon class="bill-icon" name="bill"></icon></p>
+              <p><icon class="find-icon icon" name="find"></icon></p>
               <p>
                 <router-link :to="{name:'find'}">发现</router-link>
               </p>
             </li>
             <li>
-              <p><icon class="bill-icon" name="bill"></icon></p>
+              <p><icon class="people-icon icon" name="people"></icon></p>
               <p>
                 <router-link :to="{name:'my'}">我的</router-link>
               </p>
@@ -63,7 +63,7 @@ export default {
          width: 20%;
         p {
           margin: 0;
-          .bill-icon {
+          .icon {
             width: 30px;
             height: 30px;
           }

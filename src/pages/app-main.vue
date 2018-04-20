@@ -6,9 +6,9 @@
         <search></search>
         <!--卡片轮播-->
         <template>
-          <el-carousel indicator-position="inside" height="190px">
+          <el-carousel indicator-position="inside" height="159px">
             <el-carousel-item v-for="item in imgs" :key="item.id">
-              <h3><img  :src="item.src" ></h3>
+              <h3><img  :src="item.src" style="width: 100%;" ></h3>
             </el-carousel-item>
           </el-carousel>
         </template>
@@ -22,23 +22,23 @@
           </el-row>
         </div>
         <!--爱生活-->
-        <div class="pics">
+        <div class="pics" v-for="item in List" :key="item.id">
           <el-row type="flex">
-            <el-col :span="24" ><img :src="banners.imgSrc" alt=""></el-col>
+            <el-col :span="24" ><img :src="item.banner" alt=""></el-col>
           </el-row>
           <el-row>
             <el-col :span="12" >
               <div class="pic-content">
-                <div >推荐手机dadad</div>
-                <img :src="banners.imgs[0].imgSrc" alt="">
-                <img :src="banners.imgs[0].imgSrc" alt="">
+                <div >ceshi1</div>
+                <img :src="item.imgs[0].imgSrc" alt="">
+                <img :src="item.imgs[1].imgSrc" alt="">
               </div>
             </el-col>
             <el-col :span="12" >
               <div class="pic-content">
                 <div>推荐手机adadad</div>
-                <img :src="banners.imgs[0].imgSrc" alt="">
-                <img :src="banners.imgs[0].imgSrc" alt="">
+                <img :src="item.imgs[2].imgSrc" alt="">
+                <img :src="item.imgs[3].imgSrc" alt="">
               </div>
             </el-col>
           </el-row>
@@ -46,15 +46,15 @@
             <el-col :span="12" >
               <div class="pic-content">
                 <div>推荐手机dadad</div>
-                <img :src="banners.imgs[0].imgSrc" alt="">
-                <img :src="banners.imgs[0].imgSrc" alt="">
+                <img :src="item.imgs[4].imgSrc" alt="">
+                <img :src="item.imgs[5].imgSrc" alt="">
               </div>
             </el-col>
             <el-col :span="12" >
               <div class="pic-content">
                 <div>推荐手机dadada</div>
-                <img :src="banners.imgs[0].imgSrc" alt="">
-                <img :src="banners.imgs[0].imgSrc" alt="">
+                <img :src="item.imgs[6].imgSrc" alt="">
+                <img :src="item.imgs[7].imgSrc" alt="">
               </div>
             </el-col>
           </el-row>
@@ -62,15 +62,15 @@
             <el-col :span="12" >
               <div class="pic-content">
                 <div>推荐手机dadsad</div>
-                <img :src="banners.imgs[0].imgSrc" alt="">
-                <img :src="banners.imgs[0].imgSrc" alt="">
+                <img :src="item.imgs[8].imgSrc" alt="">
+                <img :src="item.imgs[9].imgSrc" alt="">
               </div>
             </el-col>
             <el-col :span="12" >
               <div class="pic-content">
                 <div>推荐手机adsadsad</div>
-                <img :src="banners.imgs[0].imgSrc" alt="">
-                <img :src="banners.imgs[0].imgSrc" alt="">
+                <img  :src="item.imgs[10].imgSrc" alt="">
+                <img  :src="item.imgs[11].imgSrc" alt="">
               </div>
             </el-col>
           </el-row>
@@ -90,41 +90,38 @@ export default {
   name: 'appMain',
   data () {
     return {
-      imgs: [
-        {src: '/static/imgs/bg1.jpg'},
-        {src: '/static/imgs/bg1.jpg'}
-      ],
+      URL: 'http://localhost:3000',
+      imgs: [],
       icons1: [
-        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
-        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
-        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
-        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
-        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'}
+        {imgSrc: '/static/imgs/main_icons/1.png', title: 'XX超市'},
+        {imgSrc: '/static/imgs/main_icons/2.png', title: '全球购'},
+        {imgSrc: '/static/imgs/main_icons/3.png', title: 'XX生鲜'},
+        {imgSrc: '/static/imgs/main_icons/4.png', title: 'XX到家'},
+        {imgSrc: '/static/imgs/main_icons/5.png', title: '充值缴费'}
       ],
       icons2: [
-        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
-        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
-        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
-        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'},
-        {imgSrc: '/static/imgs/icons.png', title: '京东服饰'}
+        {imgSrc: '/static/imgs/main_icons/6.png', title: '9.9拼购'},
+        {imgSrc: '/static/imgs/main_icons/7.png', title: '领劵'},
+        {imgSrc: '/static/imgs/main_icons/8.png', title: '借钱'},
+        {imgSrc: '/static/imgs/main_icons/9.png', title: '物流服务'},
+        {imgSrc: '/static/imgs/main_icons/10.png', title: 'XX服饰'}
       ],
-      banners: {
-        imgSrc: '/static/imgs/pics.jpg',
-        imgs: [
-          {imgSrc: '/static/imgs/imgs.jpg'},
-          {imgSrc: '/static/imgs/imgs.jpg'},
-          {imgSrc: '/static/imgs/imgs.jpg'},
-          {imgSrc: '/static/imgs/imgs.jpg'},
-          {imgSrc: '/static/imgs/imgs.jpg'},
-          {imgSrc: '/static/imgs/imgs.jpg'},
-          {imgSrc: '/static/imgs/imgs.jpg'},
-          {imgSrc: '/static/imgs/imgs.jpg'}
-        ]
-      }
+      List: [
+      ]
     }
   },
   components: {
     myFooter, search
+  },
+  created: function () {
+    var self = this
+    self.$axios.get(self.URL + '/users/slide_imgs').then(function (res) {
+      self.imgs = res.data
+    })
+    self.$axios.get(self.URL + '/users/list_imgs').then(function (res) {
+      console.log(res.data)
+      self.List = res.data
+    })
   }
 }
 </script>

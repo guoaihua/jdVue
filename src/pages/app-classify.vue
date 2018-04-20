@@ -12,62 +12,10 @@
             <el-menu
               default-active="1"
               class="el-menu-vertical-demo">
-              <el-menu-item index="1">
+              <el-menu-item :index="index" v-for="{item, index} in nameList" :key="item">
                 <i class="el-icon-menu"></i>
-                <span slot="title">春装</span>
+                <span slot="title">{{item}}</span>
               </el-menu-item>
-              <el-menu-item index="2">
-                <i class="el-icon-menu"></i>
-                <span slot="title">春装</span>
-              </el-menu-item>
-              <el-menu-item index="3">
-                <i class="el-icon-document"></i>
-                <span slot="title">春装</span>
-              </el-menu-item>
-              <el-menu-item index="4">
-                <i class="el-icon-setting"></i>
-                <span slot="title">春装</span>
-              </el-menu-item>
-              <el-menu-item index="5">
-                <i class="el-icon-setting"></i>
-                <span slot="title">夏装</span>
-              </el-menu-item>
-              <el-menu-item index="6">
-                <i class="el-icon-setting"></i>
-                <span slot="title">夏装</span>
-              </el-menu-item>
-              <el-menu-item index="7">
-              <i class="el-icon-setting"></i>
-              <span slot="title">夏装</span>
-            </el-menu-item>
-              <el-menu-item index="8">
-              <i class="el-icon-setting"></i>
-              <span slot="title">夏装</span>
-            </el-menu-item>
-              <el-menu-item index="9">
-                <i class="el-icon-setting"></i>
-                <span slot="title">夏装</span>
-              </el-menu-item>
-              <el-menu-item index="10">
-                <i class="el-icon-setting"></i>
-                <span slot="title">秋装</span>
-              </el-menu-item>
-              <el-menu-item index="11">
-                <i class="el-icon-setting"></i>
-                <span slot="title">秋装</span>
-              </el-menu-item>
-              <el-menu-item index="12">
-                <i class="el-icon-setting"></i>
-                <span slot="title">秋装</span>
-              </el-menu-item>
-              <el-menu-item index="13">
-              <i class="el-icon-setting"></i>
-              <span slot="title">冬装</span>
-            </el-menu-item>
-              <el-menu-item index="14">
-              <i class="el-icon-setting"></i>
-              <span slot="title">冬装</span>
-            </el-menu-item>
             </el-menu>
           </el-aside>
             </el-col>
@@ -91,8 +39,20 @@ import myFooter from '../components/myFooter'
 import search from '../components/search'
 export default {
   name: 'classify',
+  data () {
+    return {
+      URL: 'http://localhost:3000/users/',
+      nameList: []
+    }
+  },
   components: {
     myFooter, search
+  },
+  created: function () {
+    var that = this
+    that.$axios.get(that.URL + 'class_names').then(function (res) {
+      that.nameList = res.data
+    })
   }
 }
 </script>

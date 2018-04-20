@@ -5,7 +5,10 @@
       prefix-icon="el-icon-search"
       v-model="inputData">
     </el-input>
-    <icon class="phone-icon" name="phone"></icon>
+    <el-badge class="item" is-dot>
+      <icon class="news-icon icon" name="news"></icon>
+    </el-badge>
+
   </div>
 </template>
 
@@ -33,9 +36,10 @@ export default {
         border-radius: 25px;
       }
     }
-    .phone-icon {
-      width: 40px;
-      height: 40px;
+    .icon {
+      width: 30px;
+      height: 30px;
+      margin-left: 10px;
     }
   }
 </style>
