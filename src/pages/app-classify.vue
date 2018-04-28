@@ -12,10 +12,12 @@
             <el-menu
               default-active="1"
               class="el-menu-vertical-demo">
-              <el-menu-item :index="index" v-for="{item, index} in nameList" :key="item">
+              <div  v-for="{item, index} in nameList" :key="item">
+              <el-menu-item :index="index">
                 <i class="el-icon-menu"></i>
                 <span slot="title">{{item}}</span>
               </el-menu-item>
+              </div>
             </el-menu>
           </el-aside>
             </el-col>
