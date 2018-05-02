@@ -12,10 +12,10 @@
             <el-menu
               default-active="1"
               class="el-menu-vertical-demo">
-              <div  v-for="{item, index} in nameList" :key="item">
-              <el-menu-item :index="index">
+              <div  v-for="item in nameList" :key="item.id">
+              <el-menu-item :index="item.id">
                 <i class="el-icon-menu"></i>
-                <span slot="title">{{item}}</span>
+                <span slot="title">{{item.name}}</span>
               </el-menu-item>
               </div>
             </el-menu>
@@ -43,7 +43,7 @@ export default {
   name: 'classify',
   data () {
     return {
-      URL: 'http://localhost:3000/users/',
+      URL: 'http://localhost:3001/users/',
       nameList: []
     }
   },

@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import Icon from 'vue-svg-icon/Icon'
 import axios from 'axios'
 
+axios.defaults.withCredentials = true
 Vue.prototype.$axios = axios
 Vue.component('icon', Icon)
 Vue.use(ElementUI)

@@ -90,7 +90,7 @@ export default {
   name: 'appMain',
   data () {
     return {
-      URL: 'http://localhost:3000',
+      URL: 'http://localhost:3001',
       imgs: [],
       icons1: [
         {imgSrc: '/static/imgs/main_icons/1.png', title: 'XX超市'},

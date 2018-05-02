@@ -5,6 +5,7 @@ import appShopping from '../pages/app-shopping'
 import appFind from '../pages/app-find'
 import appClassify from '../pages/app-classify'
 import classifyDeatail from '../pages/classifyDetail'
+import login from '../pages/login'
 import appMy from '../pages/app-my'
 
 Vue.use(Router)
@@ -39,9 +40,14 @@ export default new Router({
       component: appFind
     },
     {
-      path: 'my',
+      path: '/my',
       name: 'my',
       component: appMy
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     }
   ]
 })
