@@ -80,8 +80,10 @@ export default {
               form: self.form
             }
           }).then(function (res) {
-            if (res.data === 1) {
-              console.log('你登陆陈功')
+            var data = res.data
+            if (data.ret_name) {
+              self.$store.dispatch('setSession', data.ret_name)
+              console.log(self.$store.state.sessionName)
             }
           })
         } else {
