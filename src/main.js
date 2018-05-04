@@ -6,7 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Icon from 'vue-svg-icon/Icon'
-import axios from './http'
+import axios from 'axios'
 import store from './store'
 
 axios.defaults.withCredentials = true

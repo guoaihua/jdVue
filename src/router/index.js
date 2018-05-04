@@ -7,10 +7,11 @@ import appClassify from '../pages/app-classify'
 import classifyDeatail from '../pages/classifyDetail'
 import login from '../pages/login'
 import appMy from '../pages/app-my'
+import store from '../store'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -42,7 +43,10 @@ export default new Router({
     {
       path: '/my',
       name: 'my',
-      component: appMy
+      component: appMy,
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/login',
@@ -51,3 +55,18 @@ export default new Router({
     }
   ]
 })
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(res => res.meta.requireAuth)) {
+    if (store.state.sessionName) {
+      next()
+    } else {
+      next({
+        path: '/login'
+      })
+    }
+  } else {
+    next()
+  }
+})
+
+export default router
