@@ -127,7 +127,10 @@ export default {
           form: self.form
         }
       }).then(function (res) {
-        console.log('register success!')
+        alert(res.data.info)
+        if (res.data.status === 0) {
+          self.loginShow = true
+        }
       })
     }
   }

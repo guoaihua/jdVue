@@ -7,6 +7,7 @@ import appClassify from '../pages/app-classify'
 import classifyDeatail from '../pages/classifyDetail'
 import login from '../pages/login'
 import appMy from '../pages/app-my'
+import confirmOrder from '../pages/confirmOrder'
 import store from '../store'
 
 Vue.use(Router)
@@ -34,7 +35,14 @@ const router = new Router({
     {
       path: '/shopping',
       name: 'shopping',
-      component: appShopping
+      component: appShopping,
+      children: [
+        {
+          path: 'confirmOrder',
+          name: 'confirmOrder',
+          component: confirmOrder
+        }
+      ]
     },
     {
       path: '/find',
