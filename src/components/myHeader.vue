@@ -6,7 +6,7 @@
         </div>
         <div class="detail">
           <div class="id">1132131adsa</div>
-          <div class="username">用户名：13213adada</div>
+          <div class="username">用户名：{{username}}</div>
           <div class="icons"></div>
         </div>
       </div>
@@ -18,7 +18,8 @@ export default {
   name: 'my-header',
   data () {
     return {
-      imgs: {imgSrc: '/static/imgs/my_head.png'}
+      imgs: {imgSrc: '/static/imgs/my_head.png'},
+      username: this.$store.state.username
     }
   }
 }

@@ -4,18 +4,25 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  sessionName: ''
+  sessionName: '',
+  username: ''
 }
 
 const mutations = {
-  setSession (state, name) {
+  setSession: function (state, name) {
     state.sessionName = name
+  },
+  setName: function (state, name) {
+    state.username = name
   }
 }
 
 const actions = {
   setSession ({commit, state}, name) {
     commit('setSession', name)
+  },
+  setName ({commit, state}, name) {
+    commit('setName', name)
   }
 }
 

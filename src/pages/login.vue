@@ -1,19 +1,31 @@
 <template>
   <div id="login">
-    <el-form :model="form" status-icon :rules="rules" ref="form" label-width="100px" class="form">
+    <el-form :model="form" status-icon :rules="rules" ref="form" label-width="100px" class="form" v-show="loginShow">
     <el-form-item label="用户名" prop="user">
       <el-input type="text" v-model="form.user" auto-complete="off"></el-input>
     </el-form-item>
     <el-form-item label="密码" prop="pass">
       <el-input type="password" v-model="form.pw" auto-complete="off"></el-input>
     </el-form-item>
-    <el-form-item label="确认密码" prop="checkPass">
-      <el-input type="password" v-model="form.checkPass" auto-complete="off"></el-input>
-    </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="validate('form')">提交</el-button>
-      <el-button @click="resetForm('form')">重置</el-button>
+      <el-button type="primary" @click="login">提交</el-button>
+      <el-button @click="toRegister">注册</el-button>
     </el-form-item>
+    </el-form>
+    <el-form :model="form" status-icon :rules="rules" ref="registerForm" label-width="100px" class="form" v-show="!loginShow">
+      <el-form-item label="用户名" prop="user">
+        <el-input type="text" v-model="form.user" auto-complete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="密码" prop="pass">
+        <el-input type="password" v-model="form.pw" auto-complete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="确认密码" prop="checkPass">
+        <el-input type="password" v-model="form.checkPass" auto-complete="off"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="register">提交</el-button>
+        <el-button @click="toLogin">登录</el-button>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -52,6 +64,7 @@ export default {
       }
     }
     return {
+      loginShow: true,
       form: {
         user: '',
         checkPass: '',
@@ -73,27 +86,49 @@ export default {
   methods: {
     validate: function (formName) {
       var self = this
-      this.$refs[formName].validate((valid) => {
+      self.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$axios.get('http://localhost:3001/users/login', {
-            params: {
-              form: self.form
-            }
-          }).then(function (res) {
-            var data = res.data
-            if (data.ret_name) {
-              self.$store.dispatch('setSession', data.ret_name)
-              console.log(self.$store.state.sessionName)
-            }
-          })
+          if (formName === 'loginForm') {
+            self.login()
+          } else {
+            self.register()
+          }
         } else {
           console.log('error submit!!')
           return false
         }
       })
     },
-    resetForm: function (formName) {
-      this.$refs[formName].resetFields()
+    toRegister: function () {
+      this.loginShow = false
+    },
+    toLogin: function () {
+      this.loginShow = true
+    },
+    login: function () {
+      var self = this
+      self.$axios.get('http://localhost:3001/users/login', {
+        params: {
+          form: self.form
+        }
+      }).then(function (res) {
+        var data = res.data
+        if (data.ret_name) {
+          self.$store.dispatch('setSession', data.ret_name)
+          self.$store.dispatch('setName', data.ret_name)
+        }
+        self.$router.push({name: 'my'})
+      })
+    },
+    register: function () {
+      var self = this
+      self.$axios.get('http://localhost:3001/users/register', {
+        params: {
+          form: self.form
+        }
+      }).then(function (res) {
+        console.log('register success!')
+      })
     }
   }
 }
