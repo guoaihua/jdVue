@@ -8,6 +8,8 @@ import classifyDeatail from '../pages/classifyDetail'
 import login from '../pages/login'
 import appMy from '../pages/app-my'
 import confirmOrder from '../pages/confirmOrder'
+import goods from '../pages/shops-page'
+import users from '../pages/users-page'
 import store from '../store'
 
 Vue.use(Router)
@@ -53,6 +55,18 @@ const router = new Router({
       path: '/my',
       name: 'my',
       component: appMy,
+      children: [
+        {
+          path: 'goods',
+          name: 'goods',
+          component: goods
+        },
+        {
+          path: 'users',
+          name: 'users',
+          component: users
+        }
+      ],
       meta: {
         requireAuth: true
       }

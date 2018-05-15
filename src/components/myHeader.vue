@@ -6,8 +6,9 @@
         </div>
         <div class="detail">
           <div class="id">1132131adsa</div>
-          <div class="username">用户名：{{username}}</div>
-          <div class="icons"></div>
+          <div class="username">用户名：{{userInfos.name}}</div>
+          <div class="icons" v-if="userInfos.usertype === '0'"><router-link :to="{name:'goods'}">商店管理</router-link> </div>
+          <div class="icons" v-else><router-link :to="{name:'users'}">个人用户</router-link> </div>
         </div>
       </div>
     </div>
@@ -19,7 +20,7 @@ export default {
   data () {
     return {
       imgs: {imgSrc: '/static/imgs/my_head.png'},
-      username: this.$store.state.username
+      userInfos: this.$store.state.userInfos
     }
   }
 }

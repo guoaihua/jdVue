@@ -5,15 +5,17 @@ Vue.use(Vuex)
 
 const state = {
   sessionName: '',
-  username: ''
+  userInfos: {
+    name: ''
+  }
 }
 
 const mutations = {
   setSession: function (state, name) {
     state.sessionName = name
   },
-  setName: function (state, name) {
-    state.username = name
+  setUserInfos: function (state, userInfos) {
+    state.userInfos = userInfos
   }
 }
 
@@ -21,8 +23,8 @@ const actions = {
   setSession ({commit, state}, name) {
     commit('setSession', name)
   },
-  setName ({commit, state}, name) {
-    commit('setName', name)
+  setUserInfos ({commit, state}, userInfos) {
+    commit('setUserInfos', userInfos)
   }
 }
 

@@ -113,9 +113,9 @@ export default {
         }
       }).then(function (res) {
         var data = res.data
-        if (data.ret_name) {
-          self.$store.dispatch('setSession', data.ret_name)
-          self.$store.dispatch('setName', data.ret_name)
+        if (data.ret_code === 0) {
+          self.$store.dispatch('setSession', data.userInfos.user)
+          self.$store.dispatch('setUserInfos', data.userInfos)
         }
         self.$router.push({name: 'my'})
       })

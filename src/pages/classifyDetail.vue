@@ -46,11 +46,29 @@ export default {
       imgs: [
         {imgSrc: '/static/imgs/classify_man.jpg'},
         {imgSrc: '/static/imgs/classify_close.jpg'}
-      ]
+      ],
+      shopID: 0
+    }
+  },
+  watch: {
+    '$route': function (to, from) {
+      this.shopID = to.query.id
+      this.getDetail(this.shopID)
+    }
+  },
+  methods: {
+    getDetail: function (id) {
+      this.$axios.get('http://localhost:3001/users/getDetail', {
+        params: {
+          id: id
+        }
+      }).then(function (res) {
+        console.log(res)
+      })
     }
   },
   created: function () {
-    console.log(this.$route.query)
+    this.getDetail(this.$route.query.id)
   }
 }
 </script>

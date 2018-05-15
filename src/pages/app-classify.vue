@@ -11,11 +11,12 @@
                  <el-aside width="100%">
             <el-menu
               default-active="1"
+              @select="select"
               class="el-menu-vertical-demo">
-              <div  v-for="item in nameList" :key="item.id">
-              <el-menu-item :index="item.id">
-                <i class="el-icon-menu"></i>
-                <span slot="title">{{item.name}}</span>
+              <div  v-for="item in nameList" :key="item._id">
+              <el-menu-item :index="item._id">
+               <!-- <i class="el-icon-menu"></i>-->
+                <span slot="title">{{item.shopName}}</span>
               </el-menu-item>
               </div>
             </el-menu>
@@ -47,12 +48,18 @@ export default {
       nameList: []
     }
   },
+  methods: {
+    select: function (index, indexPath) {
+      var self = this
+      self.$router.push({name: 'classifyDetail', query: {id: index}})
+    }
+  },
   components: {
     myFooter, search
   },
   created: function () {
     var that = this
-    that.$axios.get(that.URL + 'class_names').then(function (res) {
+    that.$axios.get(that.URL + 'getShops').then(function (res) {
       that.nameList = res.data
     })
   }
