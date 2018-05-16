@@ -10,6 +10,7 @@ import appMy from '../pages/app-my'
 import confirmOrder from '../pages/confirmOrder'
 import goods from '../pages/shops-page'
 import users from '../pages/users-page'
+import goodsDetail from '../pages/goodsDetail'
 import store from '../store'
 
 Vue.use(Router)
@@ -31,6 +32,11 @@ const router = new Router({
           path: 'classifyDetail',
           name: 'classifyDetail',
           component: classifyDeatail
+        },
+        {
+          path: 'goodsDetail',
+          name: 'goodsDetail',
+          component: goodsDetail
         }
       ]
     },

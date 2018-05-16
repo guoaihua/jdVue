@@ -12,16 +12,16 @@
               <div class="btn" @click="checked(index)">
               </div>
               <div class="store-name">
-                <span>丝羽服饰专营店></span>
+                <span>{{item.user}}></span>
               </div>
             </div>
             <div class="goods-pic">
               <div class="btn" @click="checked(index)"></div>
               <div class="pics">
-                <img :src="imgs[0].imgSrc" alt="">
+                <img :src=item.imgSrc alt="">
                 <div class="goods-price">
-                  <span class="text">这是一些商品的简介qeqeqeqeqeqewqeqeqeqe {{item}}</span>
-                  <span class="num">89</span>
+                  <span class="text">{{item.title}}</span>
+                  <span class="num">{{item.price}}</span>
                   <template>
                     <el-input-number size="small" v-model="num" :min="1" :max="10" label="描述文字"></el-input-number>
                   </template>
@@ -58,7 +58,8 @@ export default {
       imgs: [
         {imgSrc: '/static/imgs/shop_close.jpg'}
       ],
-      arr: [1, 2, 3, 4]
+      arr: [1, 2, 3, 4],
+      count: 0
     }
   },
   components: {
@@ -66,6 +67,10 @@ export default {
   },
   methods: {
     checked: function (index) {
+      var self = this
+      console.log(index)
+      self.count = self.count + parseInt(self.arr[index].price)
+      console.log(self.count)
       if (this.activeIndex[index]) {
         this.$set(this.activeIndex, index, !this.activeIndex[index])
       } else {
@@ -75,6 +80,10 @@ export default {
     allChecked: function () {
       this.checkedAll = !this.checkedAll
     }
+  },
+  created: function () {
+    var self = this
+    self.arr = self.$store.state.shops
   }
 }
 </script>

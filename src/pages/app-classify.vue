@@ -1,6 +1,6 @@
 <template>
   <div id="classify">
-    <el-container>
+    <el-container v-show="!isDetail">
       <el-main class="elmain">
         <!--搜索框-->
         <search></search>
@@ -24,7 +24,7 @@
             </el-col>
             <el-col :span="16" :offset="1" class="content-right">
                   <el-main class="detail">
-                    <router-view></router-view>
+                    <router-view @setID="getID"></router-view>
                   </el-main>
             </el-col>
           </el-row>
@@ -34,6 +34,7 @@
         <my-footer></my-footer>
       </el-footer>
     </el-container>
+    <router-view v-show="isDetail"></router-view>
   </div>
 </template>
 
@@ -45,13 +46,19 @@ export default {
   data () {
     return {
       URL: 'http://localhost:3001/users/',
-      nameList: []
+      nameList: [],
+      isDetail: false
     }
   },
   methods: {
     select: function (index, indexPath) {
       var self = this
       self.$router.push({name: 'classifyDetail', query: {id: index}})
+    },
+    getID: function (id) {
+      var self = this
+      self.isDetail = true
+      self.$router.push({name: 'goodsDetail', query: {id: id}})
     }
   },
   components: {

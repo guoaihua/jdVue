@@ -7,7 +7,8 @@ const state = {
   sessionName: '',
   userInfos: {
     name: ''
-  }
+  },
+  shops: []
 }
 
 const mutations = {
@@ -16,6 +17,9 @@ const mutations = {
   },
   setUserInfos: function (state, userInfos) {
     state.userInfos = userInfos
+  },
+  setShops: function (state, img) {
+    state.shops.push(img)
   }
 }
 
@@ -25,6 +29,9 @@ const actions = {
   },
   setUserInfos ({commit, state}, userInfos) {
     commit('setUserInfos', userInfos)
+  },
+  setShops ({commit, state}, img) {
+    commit('setShops', img)
   }
 }
 
