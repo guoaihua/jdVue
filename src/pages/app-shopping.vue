@@ -65,16 +65,27 @@ export default {
   components: {
     myFooter
   },
+  watch: {
+    activeIndex: function (value, a) {
+      console.log(value, a)
+      var self = this
+      value.forEach(function (item, index) {
+        if (item) {
+          self.count = self.count + parseInt(self.arr[index].price)
+        } else {
+          self.count = self.count - parseInt(self.arr[index].price)
+        }
+      })
+      console.log(self.count)
+    }
+  },
   methods: {
     checked: function (index) {
       var self = this
-      console.log(index)
-      self.count = self.count + parseInt(self.arr[index].price)
-      console.log(self.count)
-      if (this.activeIndex[index]) {
-        this.$set(this.activeIndex, index, !this.activeIndex[index])
+      if (self.activeIndex[index]) {
+        self.$set(self.activeIndex, index, !self.activeIndex[index])
       } else {
-        this.$set(this.activeIndex, index, true)
+        self.$set(self.activeIndex, index, true)
       }
     },
     allChecked: function () {
