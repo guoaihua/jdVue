@@ -1,6 +1,6 @@
 <template>
     <div id="shopping">
-      <el-container>
+      <el-container v-show="isShow">
         <el-main class="shop-main">
          <!-- 购物车头部-->
           <div class="header">
@@ -35,19 +35,21 @@
               <div class="btn" :class="{'checked':checkedAll}"></div>
               <span>全选</span>
             </div>
-            <div class="all-price">合计：</div>
-            <div class="account">去结算(0)</div>
+            <div class="all-price">合计：{{count}}元</div>
+            <div class="account" @click="submit">去结算({{count}} )</div>
           </div>
         </el-main>
         <el-footer>
           <my-footer></my-footer>
         </el-footer>
       </el-container>
+      <router-view v-show="!isShow"></router-view>
     </div>
 </template>
 
 <script>
 import myFooter from '../components/myFooter'
+var flag = true
 export default {
   name: 'shopping',
   data () {
@@ -59,7 +61,8 @@ export default {
         {imgSrc: '/static/imgs/shop_close.jpg'}
       ],
       arr: [1, 2, 3, 4],
-      count: 0
+      count: 0,
+      isShow: true
     }
   },
   components: {
@@ -69,14 +72,13 @@ export default {
     activeIndex: function (value, a) {
       console.log(value, a)
       var self = this
+      let count = 0
       value.forEach(function (item, index) {
         if (item) {
-          self.count = self.count + parseInt(self.arr[index].price)
-        } else {
-          self.count = self.count - parseInt(self.arr[index].price)
+          count = count + parseInt(self.arr[index].price)
         }
       })
-      console.log(self.count)
+      self.count = count
     }
   },
   methods: {
@@ -89,7 +91,32 @@ export default {
       }
     },
     allChecked: function () {
-      this.checkedAll = !this.checkedAll
+      var self = this
+      self.checkedAll = !self.checkedAll
+      if (flag) {
+        self.arr.forEach(function (item, index) {
+          self.activeIndex[index] = true
+        })
+        flag = false
+      } else {
+        self.arr.forEach(function (item, index) {
+          self.activeIndex[index] = false
+        })
+        flag = true
+      }
+    },
+    submit: function () {
+      var self = this
+      var shops = []
+      // 获取当前已选择的商品信息
+      self.activeIndex.forEach(function (item, index) {
+        if (item) {
+          shops.push(self.arr[index])
+        }
+      })
+      console.log(shops)
+      self.$router.push({name: 'confirmOrder', query: { count: self.count, shops: shops }})
+      self.isShow = false
     }
   },
   created: function () {

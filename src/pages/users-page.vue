@@ -7,25 +7,29 @@
           <span>查看更多订单</span>
         </div>
         <div class="item_content">
-          <div class="item">
-            <icon class="deliverGoods-icon" name="deliverGoods"></icon>
-            <div class="item_text">代付款</div>
-          </div>
-          <div class="item">
+          <div class="item" @click="look">
+            <el-badge :value="value1" class="item">
             <icon class="deliverGoods-icon" name="deliverGoods"></icon>
             <div class="item_text">待发货</div>
+            </el-badge>
           </div>
-          <div class="item">
+          <div class="item" @click="look">
+            <el-badge :value="value2" class="item">
             <icon class="deliverGoods-icon" name="deliverGoods"></icon>
             <div class="item_text">待收货</div>
+            </el-badge>
           </div>
-          <div class="item">
+          <div class="item" @click="look">
+            <el-badge :value="value3" class="item">
             <icon class="deliverGoods-icon" name="deliverGoods"></icon>
             <div class="item_text">待评价</div>
+            </el-badge>
           </div>
-          <div class="item">
+          <div class="item" @click="look">
+            <el-badge :value="value4" class="item">
             <icon class="deliverGoods-icon" name="deliverGoods"></icon>
             <div class="item_text">退款/售后</div>
+            </el-badge>
           </div>
         </div>
       </div>
@@ -34,7 +38,46 @@
 
 <script>
 export default {
-  name: 'users-page'
+  name: 'users-page',
+  data () {
+    return {
+      value1: 0,
+      value2: 0,
+      value3: 0,
+      value4: 0
+    }
+  },
+  created: function () {
+    var self = this
+    self.$axios.get('http://localhost:3001/users/getOrderStatus', {
+      params: {
+        user: self.$store.state.userInfos.user
+      }
+    }).then(function (res) {
+      console.log(res.data)
+      res.data.forEach(function (item) {
+        switch (item.status) {
+          case 0:
+            self.value1++
+            break
+          case 1:
+            self.value2++
+            break
+          case 2:
+            self.value3++
+            break
+          case 3:
+            self.value4++
+            break
+        }
+      })
+    })
+  },
+  methods: {
+    look: function () {
+      this.$router.push({name: 'orders'})
+    }
+  }
 }
 </script>
 

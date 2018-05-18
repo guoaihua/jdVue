@@ -10,7 +10,10 @@ import appMy from '../pages/app-my'
 import confirmOrder from '../pages/confirmOrder'
 import goods from '../pages/shops-page'
 import users from '../pages/users-page'
+import orders from '../pages/orders-page'
+import logistics from '../pages/logistics-page'
 import goodsDetail from '../pages/goodsDetail'
+import container from '../pages/container-page'
 import store from '../store'
 
 Vue.use(Router)
@@ -48,7 +51,10 @@ const router = new Router({
         {
           path: 'confirmOrder',
           name: 'confirmOrder',
-          component: confirmOrder
+          component: confirmOrder,
+          meta: {
+            requireAuth: true
+          }
         }
       ]
     },
@@ -71,6 +77,16 @@ const router = new Router({
           path: 'users',
           name: 'users',
           component: users
+        },
+        {
+          path: 'orders',
+          name: 'orders',
+          component: orders
+        },
+        {
+          path: 'logistics',
+          name: 'logistics',
+          component: logistics
         }
       ],
       meta: {

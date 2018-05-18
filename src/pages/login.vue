@@ -16,6 +16,12 @@
       <el-form-item label="用户名" prop="user">
         <el-input type="text" v-model="form.user" auto-complete="off"></el-input>
       </el-form-item>
+      <el-form-item label="收货地址" prop="address">
+        <el-input type="text" v-model="form.address" auto-complete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="手机号" prop="phone">
+        <el-input type="text" v-model="form.phone" auto-complete="off"></el-input>
+      </el-form-item>
       <el-form-item label="密码" prop="pass">
         <el-input type="password" v-model="form.pw" auto-complete="off"></el-input>
       </el-form-item>
@@ -68,7 +74,9 @@ export default {
       form: {
         user: '',
         checkPass: '',
-        pw: ''
+        pw: '',
+        address: '',
+        phone: ''
       },
       rules: {
         user: [
