@@ -12,7 +12,7 @@
       <el-button @click="toRegister">注册</el-button>
     </el-form-item>
     </el-form>
-    <el-form :model="form" status-icon :rules="rules" ref="registerForm" label-width="100px" class="form" v-show="!loginShow">
+    <el-form :model="form" status-icon :rules="rules" ref="form" label-width="100px" class="form" v-show="!loginShow">
       <el-form-item label="用户名" prop="user">
         <el-input type="text" v-model="form.user" auto-complete="off"></el-input>
       </el-form-item>

@@ -11,6 +11,7 @@ import confirmOrder from '../pages/confirmOrder'
 import goods from '../pages/shops-page'
 import users from '../pages/users-page'
 import orders from '../pages/orders-page'
+import logchange from '../pages/logchange-page'
 import logistics from '../pages/logistics-page'
 import goodsDetail from '../pages/goodsDetail'
 import container from '../pages/container-page'
@@ -69,25 +70,38 @@ const router = new Router({
       component: appMy,
       children: [
         {
-          path: 'goods',
-          name: 'goods',
-          component: goods
-        },
-        {
-          path: 'users',
-          name: 'users',
-          component: users
-        },
-        {
-          path: 'orders',
-          name: 'orders',
-          component: orders
-        },
-        {
-          path: 'logistics',
-          name: 'logistics',
-          component: logistics
+          path: 'container',
+          name: 'container',
+          component: container,
+          children: [
+            {
+              path: 'goods',
+              name: 'goods',
+              component: goods
+            },
+            {
+              path: 'users',
+              name: 'users',
+              component: users
+            },
+            {
+              path: 'orders',
+              name: 'orders',
+              component: orders
+            },
+            {
+              path: 'logistics',
+              name: 'logistics',
+              component: logistics
+            },
+            {
+              path: 'logchange',
+              name: 'logchange',
+              component: logchange
+            }
+          ]
         }
+
       ],
       meta: {
         requireAuth: true

@@ -86,7 +86,7 @@ export default {
   methods: {
     lookdetail: function (index) {
       var self = this
-      self.$router.push({name: 'orders', query: {shops: self.state1[index]}})
+      self.$router.push({name: 'logistics', query: {shops: self.state1[index]}})
     }
   }
 }

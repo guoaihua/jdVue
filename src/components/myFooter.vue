@@ -10,7 +10,7 @@
             <li>
               <p><icon class="sort-icon icon" name="sort"></icon></p>
               <p>
-                <router-link :to="{name:'classifyDetail',query: {id: '5afaae3224339e2d50a58df7'}}">分类</router-link>
+                <router-link :to="{name:'classifyDetail',query: {id: '5b014dcf58ccbf30b0271a1c'}}">分类</router-link>
               </p>
             </li>
             <li>

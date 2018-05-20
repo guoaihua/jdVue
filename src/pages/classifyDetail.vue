@@ -43,6 +43,7 @@ export default {
     }
   },
   created: function () {
+    console.log(this.$route.query.id)
     this.getDetail(this.$route.query.id)
   }
 }
