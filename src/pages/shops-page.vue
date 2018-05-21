@@ -27,7 +27,6 @@
       <el-button  @click="submit">点击上传</el-button>
     </div>
     <div>商品列表</div>
-    <template>
       <el-table
         :data="goodsData"
         stripe
@@ -47,7 +46,6 @@
           label="价格">
         </el-table-column>
       </el-table>
-    </template>
   </div>
 </template>
 

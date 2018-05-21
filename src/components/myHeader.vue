@@ -7,9 +7,10 @@
         <div class="detail">
           <div class="id">1132131adsa</div>
           <div class="username">用户名：{{userInfos.user}}</div>
-          <div class="icons" v-if="userInfos.usertype === '0'"><router-link :to="{name:'goods'}">商店管理</router-link> </div>
-          <div class="icons" v-else-if="userInfos.usertype === '1'" ><router-link :to="{name:'users'}">个人用户</router-link> </div>
-          <div class="icons" v-else-if="userInfos.usertype === '2'" ><router-link :to="{name:'logchange'}">快递员</router-link> </div>
+          <div class="icons" v-if="userInfos.usertype === '0'" ><router-link :to="{name:'manage'}">管理员,你好</router-link> </div>
+          <div class="icons" v-else-if="userInfos.usertype === '1'" ><router-link :to="{name:'users'}">客官，你好</router-link> </div>
+          <div class="icons" v-else-if="userInfos.usertype === '2'"><router-link :to="{name:'goods'}">商家，你好</router-link> </div>
+          <div class="icons" v-else-if="userInfos.usertype === '3'" ><router-link :to="{name:'logchange'}">快递员，你好</router-link> </div>
         </div>
       </div>
     </div>

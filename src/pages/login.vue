@@ -115,7 +115,7 @@ export default {
     },
     login: function () {
       var self = this
-      self.$axios.get('http://localhost:3001/users/login', {
+      self.$axios.get('http://localhost:3001/login', {
         params: {
           form: self.form
         }
@@ -130,7 +130,7 @@ export default {
     },
     register: function () {
       var self = this
-      self.$axios.get('http://localhost:3001/users/register', {
+      self.$axios.get('http://localhost:3001/register', {
         params: {
           form: self.form
         }

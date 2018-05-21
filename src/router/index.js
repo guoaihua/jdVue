@@ -11,6 +11,7 @@ import confirmOrder from '../pages/confirmOrder'
 import goods from '../pages/shops-page'
 import users from '../pages/users-page'
 import orders from '../pages/orders-page'
+import manage from '../pages/manage-page'
 import logchange from '../pages/logchange-page'
 import logistics from '../pages/logistics-page'
 import goodsDetail from '../pages/goodsDetail'
@@ -98,6 +99,11 @@ const router = new Router({
               path: 'logchange',
               name: 'logchange',
               component: logchange
+            },
+            {
+              path: 'manage',
+              name: 'manage',
+              component: manage
             }
           ]
         }
